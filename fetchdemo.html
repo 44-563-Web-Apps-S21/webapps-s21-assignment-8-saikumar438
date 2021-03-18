@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>
+        Fetch Demo
+    </title>
+</head>
+
+<body>
+    <h1>Saikumar Mylavarapu Computes</h1>
+    <p>Enter a number</p>
+    <input type="number" placeholder="enter a number" id="num1">
+    <p>Enter Second Number</p>
+    <input type="number" placeholder="Enter another number" id="num2"><br>
+
+    <button onclick="compute()">Remote Compute</button>
+    <div id="result"></div>
+
+    <script>
+        function compute() {
+            let num1 = document.getElementById("num1").value;
+            let num2 = document.getElementById("num2").value;
+            fetch(`http://127.0.0.1:3001?data=${num1}&data1=${num2}`)
+            .then((resp) => { 
+                return resp.text() 
+            } )
+            .then((data) => {
+            // console.log(data)
+            document.getElementById("result").innerHTML = data;
+       });
+
+        }
+    </script>
+</body>
+
+</html>
